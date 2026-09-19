@@ -35,14 +35,21 @@ $(document).ready(function() {
         }
     });
 
-    $('.navbar a').click(function(e) {
-        if(this.hash !== "") {
-            e.preventDefault();
-            let hash = this.hash;
+    // helper: smooth scroll ke section/anchor manapun dengan offset header
+    function scrollToHash(hash) {
+        let $target = $(hash);
+        if ($target.length) {
             $('html, body').animate({
-                scrollTop: $(hash).offset().top - 80
+                scrollTop: $target.offset().top - 80
             }, 500);
-            
+        }
+    }
+
+    $('.navbar a').click(function(e) {
+        if (this.hash !== "") {
+            e.preventDefault();
+            scrollToHash(this.hash);
+
             $('.navbar a').removeClass('active');
             $(this).addClass('active');
 
@@ -50,6 +57,14 @@ $(document).ready(function() {
                 $('#menu-icon').removeClass('bx-x');
                 $('.navbar').slideUp();
             }
+        }
+    });
+
+    // link menu di footer -> scroll ke kartu menu yang sesuai
+    $('.footer-menu-link').click(function(e) {
+        if (this.hash !== "") {
+            e.preventDefault();
+            scrollToHash(this.hash);
         }
     });
 
