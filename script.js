@@ -31,11 +31,9 @@ $(document).ready(function() {
             $btn.addClass('liked');
             $countSpan.text(currentCount + 1);
             $btn.find('i').removeClass('bx-heart').addClass('bxs-heart');
-            
             $btn.find('i').fadeOut(100).fadeIn(100);
         }
     });
-
 
     $('.navbar a').click(function(e) {
         if(this.hash !== "") {
@@ -61,12 +59,30 @@ $(document).ready(function() {
         let $answer = $(this).next('.faq-answer');
         let $parentItem = $(this).parent('.faq-item');
 
-
         $('.faq-answer').not($answer).slideUp(300);
         $('.faq-item').not($parentItem).removeClass('active');
 
         $answer.slideToggle(300);
         $parentItem.toggleClass('active');
+    });
+
+    //contact form
+    $('#contactForm').submit(function(e) {
+        e.preventDefault();
+        $('#successPopup').addClass('show');
+        $(this)[0].reset();
+    });
+
+    //close popup
+    $('#closePopup').click(function() {
+        $('#successPopup').removeClass('show');
+    });
+
+    //close popup saat klik di luar
+    $('#successPopup').click(function(e) {
+        if (e.target === this) {
+            $('#successPopup').removeClass('show');
+        }
     });
 
 });
