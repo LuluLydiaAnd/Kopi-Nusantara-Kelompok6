@@ -333,7 +333,7 @@ section {
     background-color: var(--accent);
     color: white;
 }
-/* --- Styling Accordion FAQ --- */
+
 .accordion-container {
     max-width: 700px;
     margin: 0 auto;
@@ -365,7 +365,7 @@ section {
 }
 
 .faq-answer {
-    display: none; /* Sembunyikan secara default */
+    display: none;
     padding: 0 1.2rem 1.2rem;
     color: var(--text-gray);
     font-size: 0.95rem;
@@ -382,5 +382,5 @@ section {
 }
 
 .faq-item.active .icon-toggle {
-    transform: rotate(180deg); /* Mutar ikon panah saat terbuka */
+    transform: rotate(180deg);
 }
