@@ -36,13 +36,12 @@ $(document).ready(function() {
         }
     });
 
-
     $('.navbar a').click(function(e) {
         if(this.hash !== "") {
             e.preventDefault();
             let hash = this.hash;
             $('html, body').animate({
-                scrollTop: $(hash).offset().top - 80
+                scrollTop: $(hash).offset().top - 80 
             }, 500);
             
             $('.navbar a').removeClass('active');
@@ -54,19 +53,4 @@ $(document).ready(function() {
             }
         }
     });
-
-    //accordion
-    $('.faq-question').click(function() {
-
-        let $answer = $(this).next('.faq-answer');
-        let $parentItem = $(this).parent('.faq-item');
-
-
-        $('.faq-answer').not($answer).slideUp(300);
-        $('.faq-item').not($parentItem).removeClass('active');
-
-        $answer.slideToggle(300);
-        $parentItem.toggleClass('active');
-    });
-
 });
