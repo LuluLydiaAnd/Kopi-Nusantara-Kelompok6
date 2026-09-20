@@ -1,10 +1,12 @@
 $(document).ready(function() {
 
+    // buka-tutup menu navigasi (ikon garis tiga) buat versi HP
     $('#menu-icon').click(function() {
         $(this).toggleClass('bx-x');
         $('.navbar').slideToggle(300);
     });
 
+    // Menyesuaikan tampilan navbar saat ukuran layar diubah (mencegah bug menu hilang di desktop)
     $(window).resize(function() {
         if ($(window).width() >= 992) {
             $('.navbar').show();
@@ -16,6 +18,7 @@ $(document).ready(function() {
         }
     });
 
+    // fungsi tombol like: nambah/ngurangin angka sama ganti icon love
     $('.btn-like').click(function(e) {
         e.preventDefault(); 
         
@@ -24,13 +27,16 @@ $(document).ready(function() {
         let currentCount = parseInt($countSpan.text());
 
         if ($btn.hasClass('liked')) {
+            // membatalkan like (angka -1)
             $btn.removeClass('liked');
             $countSpan.text(currentCount - 1);
             $btn.find('i').removeClass('bxs-heart').addClass('bx-heart');
         } else {
+            // menambahkan like (angka +1)
             $btn.addClass('liked');
             $countSpan.text(currentCount + 1);
             $btn.find('i').removeClass('bx-heart').addClass('bxs-heart');
+            // animasi kedip saat klik like
             $btn.find('i').fadeOut(100).fadeIn(100);
         }
     });
